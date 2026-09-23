@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>网申表单示例（用于验证插件）</title>
+    <style>
+      body { font-family: "Microsoft YaHei", "Segoe UI", sans-serif; margin: 0; padding: 28px 36px 80px; background: #f6f7fb; color: #1f2937; }
+      h1 { font-size: 20px; margin: 0 0 4px; }
+      .tip { color: #64748b; font-size: 13px; margin-bottom: 18px; }
+      fieldset { border: 1px solid #e2e8f0; border-radius: 10px; background: #fff; padding: 14px 18px 18px; margin-bottom: 16px; }
+      legend { font-weight: 700; font-size: 14px; padding: 0 6px; }
+      .el-form-item, .ant-form-item { display: flex; align-items: center; margin-bottom: 10px; }
+      .el-form-item__label, .ant-form-item-label { width: 130px; text-align: right; padding-right: 10px; color: #475569; font-size: 13px; flex: none; }
+      .ant-form-item-control, .el-form-item__content { flex: 1; }
+      input[type="text"], select, textarea { width: 320px; max-width: 100%; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 13px; font-family: inherit; background: #fff; }
+      textarea { vertical-align: top; width: 420px; min-height: 64px; }
+      table { border-collapse: collapse; width: 100%; }
+      th { width: 130px; text-align: right; font-weight: 500; color: #475569; font-size: 13px; padding: 6px 10px; vertical-align: middle; }
+      td { padding: 4px 0; }
+      .req { color: #ef4444; margin-right: 3px; }
+      .plain label { display: inline-block; width: 130px; text-align: right; padding-right: 10px; }
+      .plain div { margin-bottom: 10px; }
+      .radio-row label { margin-right: 14px; font-size: 13px; }
+      iframe { width: 100%; height: 190px; border: 1px dashed #cbd5e1; border-radius: 8px; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <h1>某单位 2026 校园招聘 · 在线报名表（示例）</h1>
+    <div class="tip">此页面仅用于验证「网申自动填写助手」：点悬浮窗的「开始填写」，检查下方字段是否被正确填写、缺失字段是否在悬浮窗提示。</div>
+
+    <form id="apply-form">
+      <fieldset>
+        <legend>一、基本信息（Element 风格布局）</legend>
+        <div class="el-form-item">
+          <label class="el-form-item__label"><span class="req">*</span>姓名</label>
+          <div class="el-form-item__content"><input type="text" name="applicantName" placeholder="请输入姓名" /></div>
+        </div>
+        <div class="el-form-item">
+          <label class="el-form-item__label">性别</label>
+          <div class="el-form-item__content">
+            <select name="gender">
+              <option value="">请选择</option>
+              <option>男</option>
+              <option>女</option>
+            </select>
+          </div>
+        </div>
+        <div class="el-form-item">
+          <label class="el-form-item__label">出生日期</label>
+          <div class="el-form-item__content"><input type="date" name="birthday" /></div>
+        </div>
+        <div class="el-form-item">
+          <label class="el-form-item__label">民族</label>
+          <div class="el-form-item__content"><input type="text" name="nation" /></div>
+        </div>
+        <div class="el-form-item">
+          <label class="el-form-item__label">政治面貌</label>
+          <div class="el-form-item__content">
+            <select name="political">
+              <option value="">请选择</option>
+              <option>中共党员</option>
+              <option>中共预备党员</option>
+              <option>共青团员</option>
+              <option>群众</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>二、联系方式（表格布局）</legend>
+        <table>
+          <tr>
+            <th><span class="req">*</span>手机号码</th>
+            <td><input type="text" name="mobile" maxlength="11" /></td>
+            <th>电子邮箱</th>
+            <td><input type="text" name="mail" /></td>
+          </tr>
+          <tr>
+            <th>身份证号码</th>
+            <td><input type="text" name="idNo" /></td>
+            <th>现居住地址</th>
+            <td><input type="text" name="liveAddr" /></td>
+          </tr>
+          <tr>
+            <th>邮政编码</th>
+            <td><input type="text" name="zipcode" /></td>
+            <th>微信号</th>
+            <td><input type="text" name="weixin" /></td>
+          </tr>
+        </table>
+        <div class="plain" style="margin-top: 10px">
+          <div>
+            <label><span class="req">*</span>高考省份</label>
+            <select name="gaokaoProvince">
+              <option value="">请选择</option>
+              <option>江苏省</option>
+              <option>上海市</option>
+              <option>浙江省</option>
+            </select>
+          </div>
+          <div>
+            <label><span class="req">*</span>意向事业部</label>
+            <input type="text" name="bizUnit" placeholder="请输入意向事业部" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>三、教育背景（Ant Design 风格布局）</legend>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label"><label>毕业院校</label></div>
+          <div class="ant-form-item-control"><input type="text" name="schoolName" /></div>
+        </div>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label"><label>专业</label></div>
+          <div class="ant-form-item-control"><input type="text" name="majorName" /></div>
+        </div>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label"><label>学历</label></div>
+          <div class="ant-form-item-control">
+            <select name="degree">
+              <option value="">请选择</option>
+              <option>本科</option>
+              <option>硕士研究生</option>
+              <option>博士研究生</option>
+              <option>大专</option>
+            </select>
+          </div>
+        </div>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label"><label>毕业时间</label></div>
+          <div class="ant-form-item-control"><input type="month" name="gradMonth" /></div>
+        </div>
+        <div class="ant-form-item">
+          <div class="ant-form-item-label"><label>培养方式</label></div>
+          <div class="ant-form-item-control">
+            <select name="mode">
+              <option value="">请选择</option>
+              <option>全日制</option>
+              <option>非全日制</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>四、其他（单选框 / 复选 / 多行文本）</legend>
+        <div class="plain">
+          <div class="radio-row">
+            <label>婚姻状况</label>
+            <label><input type="radio" name="marriage" value="未婚" />未婚</label>
+            <label><input type="radio" name="marriage" value="已婚" />已婚</label>
+          </div>
+          <div class="radio-row">
+            <label>是否服从调剂</label>
+            <label><input type="radio" name="adjust" value="是" />是</label>
+            <label><input type="radio" name="adjust" value="否" />否</label>
+          </div>
+          <div>
+            <label>应聘岗位</label>
+            <input type="text" name="applyPosition" />
+          </div>
+          <div>
+            <label>期望工作城市</label>
+            <input type="text" name="expectCity" />
+          </div>
+          <div>
+            <label>到岗时间</label>
+            <input type="text" name="entryTime" placeholder="YYYY-MM" />
+          </div>
+          <div>
+            <label>自我评价</label>
+            <textarea name="selfEval"></textarea>
+          </div>
+          <div>
+            <label>专业技能</label>
+            <textarea name="skill"></textarea>
+          </div>
+          <div>
+            <label>获奖情况</label>
+            <textarea name="award"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>五、iframe 内的字段（测试跨框架填写）</legend>
+        <iframe src="demo-frame.html"></iframe>
+      </fieldset>
+    </form>
+  </body>
+</html>
